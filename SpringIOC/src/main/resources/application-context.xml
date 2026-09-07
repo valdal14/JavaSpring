@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <bean id="xmlPayloadProcess" class="com.vd14.ioc.XmlPayloadProcess" />
+    <bean id="jsonPayloadProcess" class="com.vd14.ioc.JsonPayloadProcess" />
+    <bean id="integrationEngine" class="com.vd14.ioc.IntegrationEngine">
+        <constructor-arg ref="jsonPayloadProcess"  />
+    </bean>
+    <bean id="integrationEngine2" class="com.vd14.ioc.IntegrationEngine">
+        <constructor-arg ref="xmlPayloadProcess"  />
+    </bean>
+</beans>
