@@ -1,6 +1,80 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:c="http://www.springframework.org/schema/c"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="beanB" class="com.vd14.springbean.BeanB"/>
+
+    <bean id="beanA" class="com.vd14.springbean.BeanA" c:beanB-ref="beanB" />
+
+    <bean id="beanC" class="com.vd14.springbean.BeanC" p:lifetime="14" p:beanB-ref="beanB"/>
+
+    <bean id="beanCalendar" class="com.vd14.springbean.BeanCalendar">
+        <constructor-arg>
+            <bean class="java.util.Calendar" factory-method="getInstance" />
+        </constructor-arg>
+    </bean>
+
+    <bean id="customFactory" class="com.vd14.springbean.CustomFactory"/>
+    <bean id="beanBFromFactory" factory-bean="customFactory" factory-method="getBeanBInstance"/>
+
+    <!-- Prototype Scoped Bean -->
+    <bean id="prototype" class="com.vd14.springbean.Prototype" scope="prototype"/>
+    <!-- Singleton Scoped Bean -->
+    <bean id="singleton" class="com.vd14.springbean.Singleton" scope="singleton">
+        <property name="prototype" ref="prototype"/>
+    </bean>
+
+    <!-- Bean Scope With Method Injection -->
+    <bean id="smi" class="com.vd14.springbean.SingletonWithMethodInjection">
+        <lookup-method bean="prototype" name="createPrototype"/>
+    </bean>
+
+    <!-- CollectionBean -->
+    <bean id="collectionBean" class="com.vd14.springbean.CollectionBean">
+        <property name="list">
+            <list>
+                <value>Val</value>
+                <value>Grazia</value>
+                <value>Leo</value>
+            </list>
+        </property>
+        <property name="set">
+            <set>
+                <value>Val</value>
+                <value>Grazia</value>
+                <value>Leo</value>
+            </set>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="a" value="Apple" />
+                <entry key="b" value="Banana" />
+                <entry key="c" value="Cake" />
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="a">Apple</prop>
+                <prop key="b">Bike</prop>
+            </props>
+        </property>
+        <property name="pojos">
+            <!-- Inner Bean of type CustomPojo -->
+            <bean class="com.vd14.springbean.CustomPojo"/>
+        </property>
+    </bean>
+
+    <!-- Auto-Wiring with XML -->
+    <bean id="beanD" class="com.vd14.springbean.BeanD" autowire="byType" />
+    <bean id="beanD2" class="com.vd14.springbean.BeanD" autowire="byName" />
+
+    <!-- Auto-Wire BeanE Dependency of type CallableBean -->
+    <bean id="callablePojo" class="com.vd14.springbean.CallablePojo" />
+    <bean id="beanE" class="com.vd14.springbean.BeanE">
+        <constructor-arg ref="callablePojo" />
+    </bean>
 
 </beans>
