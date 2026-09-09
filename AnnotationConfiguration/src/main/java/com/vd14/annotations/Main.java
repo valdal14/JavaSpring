@@ -8,5 +8,10 @@ public class Main {
         ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
         BeanA beanA = context.getBean("beanA",  BeanA.class);
         System.out.println("BeanA: " + beanA.getApiEndpoint());
+
+        // New Beans
+        BeanB beanB = context.getBean("beanB",  BeanB.class);
+        beanB.execBeanFirst();
+        beanB.execBeanSecond();
     }
 }

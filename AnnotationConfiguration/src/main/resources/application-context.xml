@@ -12,4 +12,24 @@
 
     <bean id="beanA" class="com.vd14.annotations.BeanA" />
 
+    <!-- New Annotations -->
+    <bean id="beanC" class="com.vd14.annotations.BeanC"/>
+
+    <bean id="beanD" class="com.vd14.annotations.BeanD">
+        <property name="id" value="123456"/>
+    </bean>
+
+    <bean id="injectBeanOne" class="com.vd14.annotations.InjectBeanOne">
+        <property name="beanC" ref="beanC"/>
+    </bean>
+
+    <bean id="injectBeanTwo" class="com.vd14.annotations.InjectBeanTwo">
+        <property name="beanD" ref="beanD"/>
+    </bean>
+
+    <bean id="beanB" class="com.vd14.annotations.BeanB">
+        <constructor-arg ref="injectBeanOne" />
+        <constructor-arg ref="injectBeanTwo" />
+    </bean>
+
 </beans>
