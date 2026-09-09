@@ -9,6 +9,8 @@
     <context:property-placeholder location="classpath:application.properties" />
     <!-- This activates the annotations like @Autowired and @Required inside our beans -->
     <context:annotation-config />
+    <!-- Tells Spring to scan this folder and its sub-folders for @Component, @Service, etc. -->
+    <context:component-scan base-package="com.vd14.annotations" />
 
     <bean id="beanA" class="com.vd14.annotations.BeanA" />
 
@@ -19,17 +21,9 @@
         <property name="id" value="123456"/>
     </bean>
 
-    <bean id="injectBeanOne" class="com.vd14.annotations.InjectBeanOne">
-        <property name="beanC" ref="beanC"/>
-    </bean>
+    <bean id="injectBeanOne" class="com.vd14.annotations.InjectBeanOne"/>
+    <bean id="injectBeanTwo" class="com.vd14.annotations.InjectBeanTwo"/>
 
-    <bean id="injectBeanTwo" class="com.vd14.annotations.InjectBeanTwo">
-        <property name="beanD" ref="beanD"/>
-    </bean>
-
-    <bean id="beanB" class="com.vd14.annotations.BeanB">
-        <constructor-arg ref="injectBeanOne" />
-        <constructor-arg ref="injectBeanTwo" />
-    </bean>
+    <bean id="beanB" class="com.vd14.annotations.BeanB"/>
 
 </beans>

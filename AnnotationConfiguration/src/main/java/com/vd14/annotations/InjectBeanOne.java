@@ -1,5 +1,9 @@
 package com.vd14.annotations;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component("first")
 public class InjectBeanOne implements Benable{
     private BeanC beanC;
 
@@ -12,6 +16,7 @@ public class InjectBeanOne implements Benable{
         return beanC;
     }
 
+    @Autowired
     public void setBeanC(BeanC beanC) {
         System.out.println("setBeanC called");
         this.beanC = beanC;
