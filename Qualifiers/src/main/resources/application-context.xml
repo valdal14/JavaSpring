@@ -23,7 +23,7 @@
     </bean>
     <bean id="beanB2" class="com.vd14.qualifiers.BeanB">
         <property name="myProperty" value="Test2"/>
-        <qualifier value="beanB2Qualifier"/>
+        <qualifier type="com.vd14.qualifiers.CustomBeanAnnotation"/>
     </bean>
     
 </beans>
