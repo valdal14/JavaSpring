@@ -18,12 +18,31 @@
     <bean id="beanC" class="com.vd14.annotations.BeanC"/>
 
     <bean id="beanD" class="com.vd14.annotations.BeanD">
-        <property name="id" value="123456"/>
+        <property name="id" value="000001"/>
     </bean>
 
     <bean id="injectBeanOne" class="com.vd14.annotations.InjectBeanOne"/>
     <bean id="injectBeanTwo" class="com.vd14.annotations.InjectBeanTwo"/>
 
     <bean id="beanB" class="com.vd14.annotations.BeanB"/>
+
+    <!-- Array Auto-Wire -->
+    <bean id="beanE" class="com.vd14.annotations.BeanE"/>
+
+    <bean id="beanF1" class="com.vd14.annotations.BeanF">
+        <property name="id" value="000001"/>
+    </bean>
+    <bean id="beanF2" class="com.vd14.annotations.BeanF">
+        <property name="id" value="000002"/>
+    </bean>
+    <bean id="beanF3" class="com.vd14.annotations.BeanF">
+        <property name="id" value="000003"/>
+    </bean>
+    <bean id="beanF4" class="com.vd14.annotations.BeanF">
+        <property name="id" value="000004"/>
+    </bean>
+
+    <!-- Inject the Application Context -->
+    <bean id="beanContext" class="com.vd14.annotations.BeanContext"/>
 
 </beans>
