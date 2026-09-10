@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 1. Tell Spring to load the properties file from the classpath -->
+    <context:property-placeholder location="classpath:application.properties" />
+    <!-- This activates the annotations like @Autowired and @Required inside our beans -->
+    <context:annotation-config />
+    <!-- Tells Spring to scan this folder and its sub-folders for @Component, @Service, etc. -->
+    <context:component-scan base-package="com.vd14.annotations" />
+
+    <bean id="beanA" class="com.vd14.annotations.BeanA" />
+
+    <!-- New Annotations -->
+    <bean id="beanC" class="com.vd14.annotations.BeanC"/>
+
+    <bean id="beanD" class="com.vd14.annotations.BeanD">
+        <property name="id" value="000001"/>
+    </bean>
+
+    <bean id="injectBeanOne" class="com.vd14.annotations.InjectBeanOne"/>
+    <bean id="injectBeanTwo" class="com.vd14.annotations.InjectBeanTwo"/>
+
+    <bean id="beanB" class="com.vd14.annotations.BeanB"/>
+
+    <!-- Array Auto-Wire -->
+    <bean id="beanE" class="com.vd14.annotations.BeanE"/>
+
+    <bean id="beanF1" class="com.vd14.annotations.BeanF">
+        <property name="id" value="000001"/>
+    </bean>
+    <bean id="beanF2" class="com.vd14.annotations.BeanF">
+        <property name="id" value="000002"/>
+    </bean>
+    <bean id="beanF3" class="com.vd14.annotations.BeanF">
+        <property name="id" value="000003"/>
+    </bean>
+    <bean id="beanF4" class="com.vd14.annotations.BeanF">
+        <property name="id" value="000004"/>
+    </bean>
+
+    <!-- Inject the Application Context -->
+    <bean id="beanContext" class="com.vd14.annotations.BeanContext"/>
+
+</beans>
