@@ -1,0 +1,4 @@
+To create a custom Spring `Resource`, it is highly recommended to extend
+`org.springframework.core.io.AbstractResource` rather than implementing
+the `Resource` interface from scratch. `AbstractResource` provides
+sensible defaults for many of the required methods.
