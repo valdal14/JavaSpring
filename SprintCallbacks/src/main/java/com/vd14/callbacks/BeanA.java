@@ -1,16 +1,16 @@
 package com.vd14.callbacks;
 
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 @Data
-@Component
 public class BeanA {
-    @Autowired
     private BeanB beanB;
 
-    public BeanA() {
+    public void init() {
         System.out.println(beanB.getMessage());
+    }
+
+    public void destroy() {
+        System.out.println("Destroy BeanA");
     }
 }

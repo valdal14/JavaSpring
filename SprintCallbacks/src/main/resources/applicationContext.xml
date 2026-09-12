@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="
         http://www.springframework.org/schema/beans 
-        http://www.springframework.org/schema/beans/spring-beans.xsd
-        http://www.springframework.org/schema/context 
-        http://www.springframework.org/schema/context/spring-context.xsd">
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- Load the properties file from the classpath -->
-    <context:property-placeholder location="classpath:application.properties" />
-    <!-- Component Scan and Annotation Config -->
-    <context:component-scan base-package="com.vd14.callbacks" />
     <!-- Place your bean here -->
+    <bean id="beanA" class="com.vd14.callbacks.BeanA" init-method="init" destroy-method="destroy">
+        <property name="beanB" ref="beanB"/>
+    </bean>
+
+    <bean id="beanB" class="com.vd14.callbacks.BeanB">
+        <property name="message" value="Callback Example"/>
+    </bean>
     
 </beans>
