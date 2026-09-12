@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Component Scan and Annotation Config -->
+    <context:component-scan base-package="com.vd14.propplaceholderconfig"/>
+    <!-- Load the properties file from the classpath -->
+    <context:property-placeholder location="classpath:application.properties" />
+
+    <!-- Place your bean here -->
+    <bean id="beanA" class="com.vd14.propplaceholderconfig.BeanA">
+        <property name="id" value="123"/>
+        <property name="email" value="vd14@gmail.com"/>
+        <property name="name" value="Val"/>
+    </bean>
+
+</beans>
