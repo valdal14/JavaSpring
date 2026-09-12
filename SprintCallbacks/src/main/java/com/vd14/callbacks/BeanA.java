@@ -9,4 +9,8 @@ import org.springframework.stereotype.Component;
 public class BeanA {
     @Autowired
     private BeanB beanB;
+
+    public BeanA() {
+        System.out.println(beanB.getMessage());
+    }
 }
