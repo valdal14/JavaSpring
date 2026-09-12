@@ -1,14 +1,14 @@
 package com.vd14.profiles;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-        ApplicationContext context = new ClassPathXmlApplicationContext("app-context.xml");
-        BeanA beanA = context.getBean("beanA",  BeanA.class);
+        ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+        BeanA beanA = context.getBean("beanA", BeanA.class);
         beanA.getStage();
 
         String[] activeProfiles = context.getEnvironment().getActiveProfiles();
